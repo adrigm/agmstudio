@@ -1,0 +1,30 @@
+body {
+  font-family: $font;
+  font-size: 16px;
+  line-height: 28px;
+  color: $color-medium;
+  //position: relative;
+  box-shadow: 0 0 20px -1px rgba($color-medium, .4);
+  // background-color: $color-light;
+
+  // -webkit-font-smoothing: antialiased;
+	// -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+    z-index: -1;
+    content: '';
+    display: block;
+    position: fixed;
+    width: 50vw;
+    height: 100vh;
+    top: 0;
+    background-color: $color-light;
+  }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}

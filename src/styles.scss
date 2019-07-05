@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,800');
+
+@import 'app/scss/prismjs-onedark';
+
+
+@import 'app/scss/config';
+@import 'app/scss/utilities';
+@import 'app/scss/main';

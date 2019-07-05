@@ -1,0 +1,140 @@
+@import '../../scss/config';
+
+.agm-sidebar {
+  background-color: $color-light;
+  width: 300px;
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+  //padding: 20px;
+  border-right: 1px solid $color-border;
+  padding: 0 0 20px 0;
+  z-index: 0;
+  transition: all ease-out .3s;
+
+  &.noAnim {
+    transition: none !important;
+  }
+}
+
+.agm-header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100px;
+}
+
+.agm-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: $color-primary;
+
+  span {
+    color: $color-dark;
+    font-weight: 300;
+  }
+}
+
+.agm-menu {
+  list-style: none;
+  padding: 0;
+  margin-right: -2px;
+
+  .menu-item {
+
+    .menu-link {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 16px;
+      height: 40px;
+      padding: 0 20px;
+      text-decoration: none;
+      color: $color-medium;
+      border: solid 1px $color-light;
+
+      i {
+        font-size: 18px;
+        margin-right: 15px;
+      }
+    }
+
+    &:hover,
+    &:focus {
+        .menu-link {
+          border-color: $color-hover;
+          background-color: $color-hover;
+        }
+    }
+
+    &.active {
+      .menu-link {
+        background-color: #fff;
+        border-color: $color-border;
+        color: $color-primary;
+
+
+        transition: all ease-in-out .1s;
+      }
+    }
+  }
+}
+
+.agm-logo {
+  display: block;
+  height: 32px;
+  width: 32px;
+  background-color: $color-primary;
+  color: $color-light;
+  transform: rotate(45deg);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 20px 0 15px;
+  transition: transform ease 1s;
+  will-change: transform;
+
+  span {
+    position: absolute;
+    transform: rotate(-45deg);
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    font-size: 38px;
+    line-height: 40px;
+    font-weight: 700;
+    display: block;
+    height: 100%;
+    width: 100%;
+    transition: transform ease 1s;
+    //will-change: transform;
+
+  }
+
+  &:hover {
+    transform: rotate(405deg);
+
+    span {
+      transform: rotate(-765deg);
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .agm-sidebar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    background-color: $color-light;
+    box-shadow: -4px 0px 20px rgba($color-medium, .5);
+    //transform: translateX(-320px);
+
+    &.hide {
+      left: -320px;
+    }
+  }
+}

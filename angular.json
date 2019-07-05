@@ -47,9 +47,18 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/overlayscrollbars/css/OverlayScrollbars.min.css",
+              "node_modules/animate.css/animate.min.css",
+              "node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/overlayscrollbars/js/OverlayScrollbars.min.js",
+              "node_modules/prismjs/prism.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -138,6 +147,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "agmstudio"
 }

@@ -1,0 +1,61 @@
+@import './config';
+
+.font-300 {
+  font-weight: 300;
+}
+
+.font-400 {
+  font-weight: 400;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+.color-dark {
+  color: $color-dark;
+}
+
+.color-medium {
+  color: $color-medium;
+}
+
+.color-light {
+  color: $color-light;
+}
+
+.color-hover {
+  color: $color-hover;
+}
+
+.color-border {
+  color: $color-border;
+}
+
+.bg-primary {
+  background-color: $color-primary;
+}
+
+.bg-dark {
+  background-color: $color-dark;
+}
+
+.bg-medium {
+  background-color: $color-medium;
+}
+
+.bg-light {
+  background-color: $color-light;
+}
+
+.bg-hover {
+  background-color: $color-hover;
+}
+
+.bg-border {
+  background-color: $color-border;
+}

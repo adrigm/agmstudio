@@ -1,0 +1,65 @@
+@import 'scss/config';
+
+.backdrop {
+  background-color: rgba(116,129,141,0.50);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+
+.agm-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100vh;
+  //overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+
+  .sidebar-container {
+    background-color: $color-light;
+
+    //position: sticky;
+    //height: 100vh;
+
+    .hide {
+      transform: translateX(-320px);
+    }
+  }
+
+  .pages-container {
+    padding: 25px;
+    margin-left: 300px;
+    width: 100%;
+    // border-right: solid 1px $color-border;
+  }
+}
+
+@media (max-width: 991px) {
+  .agm-container {
+
+    .sidebar-container {
+      //width: 0;
+    }
+
+    .pages-container {
+      // background-color: #0f0;
+      margin: 50px auto 0 auto;
+      padding: 15px;
+    }
+  }
+}
+
+.agm-navbar-container {
+  background-color: $color-light;
+  box-shadow: 0 3px 8px 0 rgba(116,129,141,0.20);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100vw;
+  z-index: 4;
+}
