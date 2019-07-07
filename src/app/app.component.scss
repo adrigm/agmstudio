@@ -9,7 +9,7 @@
 }
 
 .agm-container {
-  max-width: 1440px;
+  max-width: 1400px;
   margin: 0 auto;
   background-color: #fff;
   min-height: 100vh;
@@ -31,24 +31,26 @@
   }
 
   .pages-container {
-    padding: 25px;
+    // padding: 25px;
     margin-left: 300px;
     width: 100%;
-    // border-right: solid 1px $color-border;
+    overflow: hidden;
+    border-right: solid 1px $color-border;
   }
 }
 
 @media (max-width: 991px) {
   .agm-container {
 
-    .sidebar-container {
-      //width: 0;
-    }
+    // .sidebar-container {
+    //   //width: 0;
+    // }
 
     .pages-container {
       // background-color: #0f0;
       margin: 50px auto 0 auto;
       padding: 15px;
+      border: none;
     }
   }
 }
@@ -62,4 +64,8 @@
   height: 50px;
   width: 100vw;
   z-index: 4;
+}
+
+.animated-delay {
+  animation-delay: 1s;
 }

@@ -5,7 +5,7 @@ body {
   color: $color-medium;
   //position: relative;
   box-shadow: 0 0 20px -1px rgba($color-medium, .4);
-  // background-color: $color-light;
+  background-color: $color-light;
 
   // -webkit-font-smoothing: antialiased;
 	// -moz-osx-font-smoothing: grayscale;
@@ -28,3 +28,4 @@ a:focus,
 a:active {
   text-decoration: none;
 }
+

@@ -1,11 +1,6 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
-      <div *ngFor="let post of posts">
-        <div>
-          <h2>{{ post.title }}</h2>
-          <div [innerHTML]="post.content"></div>
-        </div>
-      </div>
-  </div>
+<div class="page-container">
+  <ng-container *ngFor="let post of posts">
+    <h2>{{ post.title }}</h2>
+    <!-- <div class="post-content" [innerHTML]="post.content | domSafe"></div> -->
+  </ng-container>
 </div>

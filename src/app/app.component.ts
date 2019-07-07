@@ -3,8 +3,9 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { BreakpointObserver,  } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
+import { ScrollService } from './services/scroll.service';
 
-declare var OverlayScrollbars;
+
 
 export type BreakpointType = 'xs' | 'sm' |  'md' | 'lg' | 'xl';
 
@@ -22,7 +23,6 @@ export const BreakpointsMedia = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  ob: any[] | any;
   smallDevice: boolean;
   showSidebar: boolean;
 
@@ -32,13 +32,12 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
+    private scrollService: ScrollService
   ) {}
 
   ngOnInit() {
-    this.setScroll();
     this.changeRouter();
     this.setBreakPoint();
-
   }
 
   private setBreakPoint() {
@@ -64,40 +63,20 @@ export class AppComponent implements OnInit {
     }
   }
 
-  setScroll() {
-    this.ob = OverlayScrollbars(document.querySelectorAll('.st-scroll'), {
-      // className       : 'os-theme-thin-dark',
-      resize          : 'none',
-      sizeAutoCapable : false,
-      // paddingAbsolute : true,
-      // autoUpdate      : true,
-      scrollbars : {
-          autoHide: 'leave',
-          autoHideDelay: 100
-      },
-      overflowBehavior: {
-        x: 'h'
-      },
-      callbacks: {
-        onScroll: () => {
-          // this.scroll = this.ob.scroll().position.y;
-        }
-      }
-    });
-  }
+
 
   changeRouter() {
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd),
       map( (route: NavigationEnd) => route.urlAfterRedirects)
     ).subscribe(url => {
-      if (Array.isArray(this.ob)) {
-        this.ob.map(op => {
+      if (Array.isArray(this.scrollService.scrollElements)) {
+        this.scrollService.scrollElements.map(op => {
           op.scroll({ y : '0px'  });
           this.showSidebar = false;
         });
       } else {
-        this.ob.scroll({ y : '0px'  });
+        this.scrollService.scrollElements.scroll({ y : '0px'  });
         this.showSidebar = false;
       }
     });

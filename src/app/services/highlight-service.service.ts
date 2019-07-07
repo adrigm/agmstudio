@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 import 'prismjs';
 import 'prismjs/plugins/line-numbers/prism-line-numbers';
+import 'prismjs/plugins/unescaped-markup/prism-unescaped-markup';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-java';
