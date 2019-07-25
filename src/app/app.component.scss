@@ -9,15 +9,17 @@
 }
 
 .agm-container {
-  max-width: 1400px;
+  max-width: 1160px;
   margin: 0 auto;
   background-color: #fff;
   min-height: 100vh;
   //overflow: hidden;
-
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+
 
   .sidebar-container {
     background-color: $color-light;
@@ -35,7 +37,7 @@
     margin-left: 300px;
     width: 100%;
     overflow: hidden;
-    border-right: solid 1px $color-border;
+    // border-right: solid 1px $color-border;
   }
 }
 
