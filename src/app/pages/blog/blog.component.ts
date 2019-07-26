@@ -4,7 +4,7 @@ import { CockpitService } from 'src/app/services/cockpit.service';
 import { HighlightService } from '../../services/highlight-service.service';
 import { ScrollService } from '../../services/scroll.service';
 import { ViewEncapsulation } from '@angular/compiler/src/core';
-import { Post } from '../../interfaces/post';
+import { Post } from '../../interfaces/post.interface';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -29,7 +29,7 @@ export class BlogComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.postsSubscribe = this.cockpit.getAllPosts()
     .subscribe( (posts: Post[]) => {
       this.posts = posts;
-      console.log(posts);
+      // console.log(posts);
     });
 
   }

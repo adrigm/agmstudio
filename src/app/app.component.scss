@@ -11,14 +11,26 @@
 .agm-container {
   max-width: 1160px;
   margin: 0 auto;
-  background-color: #fff;
+  // background-color: #fff;
   min-height: 100vh;
   //overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: 500000px;
+    background-color: $color-light;
+  }
 
 
   .sidebar-container {

@@ -1,9 +1,9 @@
 export interface Post {
-  categories: string[];
+  categories: any[];
   content: string;
   image: string;
   published: boolean;
-  tags: string[];
+  tags: any[];
   title: string;
   title_slug: string;
   _by: string;
