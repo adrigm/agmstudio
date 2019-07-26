@@ -4,6 +4,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { BreakpointObserver,  } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { ScrollService } from './services/scroll.service';
+import { CockpitService } from './services/cockpit.service';
 
 
 
@@ -32,12 +33,18 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private cockpitService: CockpitService
   ) {}
 
   ngOnInit() {
     this.changeRouter();
     this.setBreakPoint();
+
+    this.cockpitService.getAllPosts()
+    .subscribe( resp => {
+      console.log(resp);
+    });
   }
 
   private setBreakPoint() {

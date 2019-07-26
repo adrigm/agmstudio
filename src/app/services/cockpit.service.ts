@@ -28,13 +28,32 @@ export class CockpitService {
     const body = {
       filter: {
         published: true,
-        // tags: {
-        //   $in: ['test']
-        // }
+        // 'categories._id': '5d3a04896566623df10002fc'
+        tags: {
+          $in: [{_id: '5d3sa095a6566621e5200009b'}]
+        }
       },
+      // fields: { title: 1, categories: 1 },
       sort: { _created: -1 },
       limit: this.postsPerPages,
-      simple: 1
+      simple: 1,
+      // populate: 1
+    };
+
+    return this.http.post(this.url, body, { headers: this.headers });
+  }
+
+  public getPostByCategoryID(id: string) {
+    const body = {
+      filter: {
+        published: true,
+        'categories._id': id
+      },
+      // fields: { title: 1, categories: 1 },
+      sort: { _created: -1 },
+      limit: this.postsPerPages,
+      simple: 1,
+      populate: 1
     };
 
     return this.http.post(this.url, body, { headers: this.headers });
