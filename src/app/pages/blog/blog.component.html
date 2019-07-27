@@ -1,92 +1,14 @@
 <div class="page-container">
   <h1 class="page-title">Blog</h1>
-  <article class="post">
+  <article class="post animated fadeIn" *ngFor="let post of posts">
     <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
+      <img class="img-fluid" [src]="'https://agmstudio.io/cockpit2/storage/uploads' + post.image.path" alt="RxJs">
     </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
+    <h2 class="post-title">{{ post.title }}</h2>
     <a href="javascript:void(0)" class="post-read-more">
       <i class="zmdi zmdi-arrow-right"></i>
     </a>
   </article>
 
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Plyr – Un media player todoterreno para tus proyectos frontend</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Aprendiendo a usar el operador switchMap de RxJs</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
-
-  <article class="post">
-    <div class="post-img">
-      <img class="img-fluid" src="assets/img/rxjs.png" alt="RxJs">
-    </div>
-    <h2 class="post-title">Una introducción a Gulp para el desarrollador frontend. Parte 2</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
+  <div class="load-btn" *ngIf="!loading && posts.length !== totalPosts" (click)="loadPage()">Cargar {{ postPerPages }} más</div>
 </div>

@@ -6,6 +6,8 @@ import { ScrollService } from '../../services/scroll.service';
 import { ViewEncapsulation } from '@angular/compiler/src/core';
 import { Post } from '../../interfaces/post.interface';
 import { Subscription } from 'rxjs';
+import { PostsService } from '../../services/cockpit/posts.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-blog',
@@ -15,23 +17,42 @@ import { Subscription } from 'rxjs';
 })
 export class BlogComponent implements OnInit, AfterViewChecked, OnDestroy {
 
-  posts: Post[];
+  posts: Post[] = [];
   highlighted = false;
   postsSubscribe: Subscription = new Subscription();
+
+  page = 1;
+  totalPosts: number;
+  loading = false;
+  postPerPages = environment.posts.postsPerPage;
 
   constructor(
     private highlightService: HighlightService,
     private scrollService: ScrollService,
-    private cockpit: CockpitService
+    private postsService: PostsService
   ) { }
 
   public ngOnInit() {
-    this.postsSubscribe = this.cockpit.getAllPosts()
+    this.postsSubscribe = this.postsService.getPosts()
     .subscribe( (posts: Post[]) => {
-      this.posts = posts;
-      // console.log(posts);
+      this.posts.push(...posts);
+      console.log(this.posts);
     });
 
+    this.postsService.getNumPosts()
+    .subscribe( num => this.totalPosts = num);
+
+  }
+
+  public loadPage() {
+    this.loading = true;
+    this.postsService.getPosts(this.page)
+    .subscribe( (posts: Post[]) => {
+      this.posts.push(...posts);
+      this.page++;
+      this.loading = false;
+      console.log(this.posts);
+    });
   }
 
   public ngAfterViewChecked(): void {

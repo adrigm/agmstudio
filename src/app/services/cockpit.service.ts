@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../interfaces/post.interface';
-import { map, filter } from 'rxjs/operators';
+import { map, filter, tap } from 'rxjs/operators';
 import { Tag } from '../interfaces/tag.interface';
 import { Category } from '../interfaces/category.interface';
 
@@ -38,11 +38,26 @@ export class CockpitService {
       // fields: { title: 1, categories: 1 },
       sort: { _created: -1 },
       limit: this.postsPerPages,
-      simple: 1,
+      simple: 0,
       populate: 1
     };
 
     return this.http.post<Post[]>(this.urlPost, body, { headers: this.headers });
+  }
+
+  public getNumPosts() {
+    const body = {
+      filter: {
+        published: true,
+      },
+      limit: 1,
+      fields: { _id: 1 }
+    };
+
+    return this.http.post(this.urlPost, body, { headers: this.headers })
+    .pipe(
+      map( (resp: any) => resp.total)
+    );
   }
 
   public getPostsByTagID(id: string) {

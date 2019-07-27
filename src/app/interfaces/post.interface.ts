@@ -1,9 +1,13 @@
+import { Category } from './category.interface';
+import { Tag } from './tag.interface';
+import { Archive } from './archive.interface';
+
 export interface Post {
-  categories: any[];
+  categories: Category[];
   content: string;
-  image: string;
+  image: Archive;
   published: boolean;
-  tags: any[];
+  tags: Tag[];
   title: string;
   title_slug: string;
   _by: string;

@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     this.changeRouter();
     this.setBreakPoint();
 
-    this.cockpitService.getTagBySlug('ngrx')
+    this.cockpitService.getNumPosts()
     .subscribe( resp => {
       console.log(resp);
     });
