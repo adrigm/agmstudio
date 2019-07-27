@@ -1,11 +1,11 @@
 import { Category } from './category.interface';
 import { Tag } from './tag.interface';
-import { Archive } from './archive.interface';
+import { File } from './file.interface';
 
 export interface Post {
   categories: Category[];
   content: string;
-  image: Archive;
+  image: File;
   published: boolean;
   tags: Tag[];
   title: string;

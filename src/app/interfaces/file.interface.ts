@@ -1,4 +1,4 @@
-export interface Archive {
+export interface File {
   path: string;
   title: string;
   mime: string;
