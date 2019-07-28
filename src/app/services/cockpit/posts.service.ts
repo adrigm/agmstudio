@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Post } from '../../interfaces/post.interface';
-import { map, switchMap, filter, tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 import { PostFilters } from '../../interfaces/post-filters.interdace';
-import { CockpitService } from '../cockpit.service';
-import { TagsService } from './tags.service';
+import { Post } from '../../interfaces/post.interface';
 import { CategoryService } from './category.service';
+import { TagsService } from './tags.service';
 
 @Injectable({
   providedIn: 'root'

@@ -56,10 +56,6 @@
 @media (max-width: 991px) {
   .agm-container {
 
-    // .sidebar-container {
-    //   //width: 0;
-    // }
-
     .pages-container {
       // background-color: #0f0;
       margin: 50px auto 0 auto;
@@ -68,6 +64,13 @@
     }
   }
 }
+
+@media (min-width: 2070px) {
+  .agm-container {
+    max-width: 1400px;
+  }
+}
+
 
 .agm-navbar-container {
   background-color: $color-light;

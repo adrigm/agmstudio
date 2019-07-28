@@ -8,12 +8,14 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ContactComponent } from './contact/contact.component';
 import { PostComponent } from './post/post.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [HomeComponent, BlogComponent, AboutComponent, BooksComponent, PortfolioComponent, ContactComponent, PostComponent],
   imports: [
     CommonModule,
-    PipesModule
+    PipesModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }

@@ -1,4 +1,4 @@
-<div (click)="showSidebar = false" *ngIf="showSidebar && smallDevice" class="backdrop animated-delay animated fadeIn"></div>
+<div (click)="showSidebar = false" *ngIf="showSidebar && smallDevice" class="backdrop animated fadeIn"></div>
 
 <div class="agm-container">
   <app-navbar (sidebarOpen)="showSidebar = true" *ngIf="smallDevice" class="agm-navbar-container animated fadeInDown"></app-navbar>

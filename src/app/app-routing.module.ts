@@ -11,8 +11,8 @@ import { PostComponent } from './pages/post/post.component';
 
 const routes: Routes = [
   { path: 'inicio', component: HomeComponent },
+  { path: 'blog/:type/:id', component: BlogComponent },
   { path: 'blog', component: BlogComponent },
-  { path: 'blog/:id', component: PostComponent },
   { path: 'portafolio', component: PortfolioComponent },
   { path: 'libros', component: BooksComponent },
   { path: 'sobre-mi', component: AboutComponent },

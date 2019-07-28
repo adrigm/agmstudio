@@ -1,14 +1,21 @@
 <div class="page-container">
-  <h1 class="page-title">Blog</h1>
-  <article class="post animated fadeIn" *ngFor="let post of posts">
-    <div class="post-img">
-      <img class="img-fluid" [src]="'https://agmstudio.io/cockpit2/storage/uploads' + post.image.path" alt="RxJs">
-    </div>
-    <h2 class="post-title">{{ post.category.name }} - {{ post.title }}</h2>
-    <a href="javascript:void(0)" class="post-read-more">
-      <i class="zmdi zmdi-arrow-right"></i>
-    </a>
-  </article>
+  <ng-container *ngIf="!post">
+    <h1 class="page-title">Blog</h1>
+    <article class="post animated fadeIn" *ngFor="let post of posts">
+      <div class="post-img">
+        <img class="img-fluid" [src]="'https://agmstudio.io/cockpit2/storage/uploads' + post.image.path" alt="RxJs">
+      </div>
+      <h2 class="post-title">{{ post.category.name }} - {{ post.title }}</h2>
+      <a href="javascript:void(0)" class="post-read-more">
+        <i class="zmdi zmdi-arrow-right"></i>
+      </a>
+    </article>
 
-  <div class="load-btn" *ngIf="!loading && posts.length !== totalPosts" (click)="loadPage()">Cargar {{ postPerPages }} más</div>
+    <div class="load-btn" *ngIf="!loading && posts.length !== totalPosts" (click)="loadPage()">Cargar {{ postPerPages }}
+      más</div>
+  </ng-container>
+  <ng-container *ngIf="post">
+    <app-post-content [post]="post | async"></app-post-content>
+  </ng-container>
+
 </div>
