@@ -3,7 +3,7 @@ import { Tag } from './tag.interface';
 import { File } from './file.interface';
 
 export interface Post {
-  categories: Category[];
+  category: Category;
   content: string;
   image: File;
   published: boolean;

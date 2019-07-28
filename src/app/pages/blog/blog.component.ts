@@ -1,5 +1,4 @@
 import { AfterViewChecked, Component, OnInit, OnDestroy } from '@angular/core';
-import { CockpitService } from 'src/app/services/cockpit.service';
 
 import { HighlightService } from '../../services/highlight-service.service';
 import { ScrollService } from '../../services/scroll.service';
@@ -33,10 +32,9 @@ export class BlogComponent implements OnInit, AfterViewChecked, OnDestroy {
   ) { }
 
   public ngOnInit() {
-    this.postsSubscribe = this.postsService.getPosts()
+    this.postsSubscribe = this.postsService.getPosts({ content: false })
     .subscribe( (posts: Post[]) => {
       this.posts.push(...posts);
-      console.log(this.posts);
     });
 
     this.postsService.getNumPosts()
@@ -46,7 +44,7 @@ export class BlogComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   public loadPage() {
     this.loading = true;
-    this.postsService.getPosts(this.page)
+    this.postsService.getPosts({ page: this.page })
     .subscribe( (posts: Post[]) => {
       this.posts.push(...posts);
       this.page++;
