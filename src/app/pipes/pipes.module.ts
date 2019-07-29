@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSafePipe } from './dom-safe.pipe';
+import { TagsPipe } from './tags.pipe';
 
 
 
 @NgModule({
   declarations: [
-    DomSafePipe
+    DomSafePipe,
+    TagsPipe
   ],
   imports: [],
   exports: [
-    DomSafePipe
+    DomSafePipe,
+    TagsPipe
   ]
 })
 export class PipesModule { }

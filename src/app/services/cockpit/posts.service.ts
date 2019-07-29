@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { PostFilters } from '../../interfaces/post-filters.interdace';
@@ -83,6 +83,7 @@ export class PostsService {
 
     return this.tagsService.getTagBySlug(slug)
     .pipe(
+
       map( tag => tag ? tag._id : '' ),
       switchMap( id => this.getPostsByTagID(id, options) )
     );

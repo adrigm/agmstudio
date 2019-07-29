@@ -9,7 +9,7 @@ export const environment = {
     url: 'http://agmstudio.io/cockpit2/api/collections/get'
   },
   posts: {
-    postsPerPage: 5
+    postsPerPage: 2
   }
 };
 

@@ -1,0 +1,104 @@
+@import '../../scss/config';
+
+.page-title {
+  font-weight: 300;
+  margin-bottom: 30px;
+  border-bottom: dashed 1px $color-border;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.post {
+  border: 1px solid $color-border;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.10);
+  padding: 20px;
+  margin-bottom: 30px;
+  transition: border ease .2s;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+
+  .post-title-container {
+    flex: 1 1 auto;
+
+    .post-category,
+    .post-tag {
+      font-size: 14px;
+      font-weight: 300;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      i {
+        margin-right: 8px;
+        font-size: 16px;
+      }
+    }
+
+    .post-title {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 140%;
+      transition: all ease 0.5s;
+    }
+  }
+
+  .post-img {
+    max-width: 80px;
+    width: auto;
+    margin-right: 30px;
+    flex: 1 0 auto;
+  }
+
+  .post-read-more {
+    width: 50px;
+    height: 50px;
+    flex: 0 0 auto;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-border;
+    transition: all ease 0.2s;
+    transition-delay: 0.05s;
+
+
+    i {
+      font-size: 24px;
+    }
+  }
+
+  &:hover {
+    border-color: $color-primary;
+
+    .post-title-container {
+      .post-title {
+        color: $color-primary;
+      }
+    }
+
+    .post-read-more {
+      color: $color-primary;
+    }
+  }
+}
+
+.load-btn {
+  display: block;
+  padding: 10px;
+  border: solid 1px $color-border;
+  text-align: center;
+  font-size: 16px;
+  text-transform: uppercase;
+  box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.10);
+  cursor: pointer;
+  transition: all ease .3s;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

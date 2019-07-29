@@ -1,1 +1,38 @@
-<p>post-list works!</p>
+<h1 class="page-title">Blog</h1>
+
+<article (click)="goPost(post.title_slug)" class="post animated fadeIn" *ngFor="let post of posts">
+  <div class="post-img">
+    <img class="img-fluid" [src]="'https://agmstudio.io/cockpit2/storage/uploads' + post.image.path" alt="RxJs">
+  </div>
+  <div class="post-title-container">
+    <span class="post-category mr-4"> <i class="color-primary zmdi zmdi-folder-outline"></i>
+      {{ post.category.name | uppercase }}</span>
+    <span class="post-tag"> <i class="color-primary zmdi zmdi-label-alt-outline"></i> {{ post.tags | tags }}</span>
+    <h2 class="post-title">{{ post.title }}</h2>
+  </div>
+  <div class="post-read-more">
+    <i class="zmdi zmdi-arrow-right"></i>
+  </div>
+</article>
+
+<ng-container *ngIf="loading">
+  <ng-container *ngFor="let item of postPerPage">
+    <article class="post">
+      <div class="content-preload img-preload-80 mr-4"></div>
+      <div class="post-title-container">
+        <span class="content-preload span-preload mb-2 mr-4"></span>
+        <span class="content-preload span-preload-small mb-2 mr-2"></span>
+        <span class="content-preload span-preload-small mb-2 mr-2"></span>
+        <span class="content-preload span-preload-small mb-2 mr-2"></span>
+        <span class="content-preload span-preload-small mb-2 mr-2"></span>
+        <div class="content-preload title-preload-2"></div>
+      </div>
+      <div class="post-read-more">
+        <i class="zmdi zmdi-arrow-right"></i>
+      </div>
+    </article>
+  </ng-container>
+</ng-container>
+
+
+<div class="load-btn" *ngIf="!loading && posts.length !== totalPosts" (click)="loadPosts()">Cargar más</div>

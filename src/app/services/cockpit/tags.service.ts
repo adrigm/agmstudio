@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Tag } from '../../interfaces/tag.interface';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class TagsService {
   private headers = new HttpHeaders({
     'Cockpit-Token': environment.cockpit.token
   });
-  private url = `${ environment.cockpit.url }/category`;
+  private url = `${ environment.cockpit.url }/tag`;
 
   constructor(
     private http: HttpClient,
@@ -49,6 +49,7 @@ export class TagsService {
 
     return this.http.post<Tag[]>(this.url, body, { headers: this.headers })
     .pipe(
+      tap(console.log),
       map( tag => tag.length > 0 ? tag[0] : null )
     );
   }
