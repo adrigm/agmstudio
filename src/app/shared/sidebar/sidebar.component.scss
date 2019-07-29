@@ -36,7 +36,44 @@
   }
 }
 
-.agm-menu {
+.section-menu-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0 20px;
+  font-weight: 600;
+  color: darken($color-light, 15);
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+.section-menu-tags {
+  padding: 0 0 0 10px;
+  margin: 0;
+
+  .menu-tag {
+    display: inline-block;
+    padding: 0px 5px;
+    min-width: 40px;
+    text-align: center;
+    margin: 2px 5px 5px 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: $color-medium;
+    background-color: darken($color-light, 3);
+    border: solid 1px $color-border;
+    border-radius: 3px;
+    transition: all ease .2s;
+
+    &:hover,
+    &:focus {
+      background-color: $color-primary;
+      border-color: $color-primary;
+      color: #fff;
+    }
+  }
+}
+
+.section-menu {
   list-style: none;
   padding: 0;
   margin-right: -2px;

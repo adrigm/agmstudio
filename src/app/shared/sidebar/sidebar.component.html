@@ -6,12 +6,38 @@
   </a>
 
   <nav class="agm-sidebar-section">
-    <ul class="agm-menu">
+    <ul class="section-menu">
       <li *ngFor="let item of menuItems; let i = index" routerLinkActive="active" [class]="'menu-item animated slideInRight animation-delay-' + (i + 4)">
         <a [routerLink]="item.route" class="menu-link">
           <i [classList]="item.icon"></i> {{ item.name }}
         </a>
       </li>
+    </ul>
+
+    <h3 class="section-menu-title">Categorías</h3>
+    <ul class="section-menu">
+      <li *ngFor="let item of menuItems; let i = index" routerLinkActive="active" [class]="'menu-item animated slideInRight animation-delay-' + (i + 4)">
+        <a [routerLink]="item.route" class="menu-link">
+          <i class="zmdi zmdi-folder-outline"></i> {{ item.name }}
+        </a>
+      </li>
+    </ul>
+
+    <h3 class="section-menu-title">Etiquetas</h3>
+    <ul class="section-menu-tags">
+      <li class="menu-tag">RxJS</li>
+      <li class="menu-tag">Angular</li>
+      <li class="menu-tag">Typescript</li>
+      <li class="menu-tag">NgRx</li>
+      <li class="menu-tag">Flutter</li>
+      <li class="menu-tag">Javascript</li>
+      <li class="menu-tag">SCSS</li>
+      <li class="menu-tag">UI</li>
+      <li class="menu-tag">Bootstrap</li>
+      <li class="menu-tag">Gulp</li>
+      <li class="menu-tag">AGMStudio</li>
+      <li class="menu-tag">Node</li>
+      <li class="menu-tag">Firebase</li>
     </ul>
   </nav>
 </aside>
