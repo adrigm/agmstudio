@@ -49,7 +49,6 @@ export class TagsService {
 
     return this.http.post<Tag[]>(this.url, body, { headers: this.headers })
     .pipe(
-      tap(console.log),
       map( tag => tag.length > 0 ? tag[0] : null )
     );
   }

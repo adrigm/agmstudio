@@ -7,7 +7,7 @@
 
   <nav class="agm-sidebar-section">
     <ul class="section-menu">
-      <li *ngFor="let item of menuItems; let i = index" routerLinkActive="active"
+      <li *ngFor="let item of menuItems$ | async; let i = index" routerLinkActive="active"
         [class]="'menu-item animated fadeIn animation-delay-' + (i + 4)">
         <a [routerLink]="item.route" class="menu-link">
           <i [classList]="item.icon"></i> {{ item.name }}

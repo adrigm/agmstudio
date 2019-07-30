@@ -2,10 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../../interfaces/category.interface';
 import { CategoryService } from '../../services/cockpit/category.service';
-import { take } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Tag } from '../../interfaces/tag.interface';
 import { TagsService } from '../../services/cockpit/tags.service';
+import { MenuItem } from 'src/app/interfaces/menu-item.interface';
+import { MenuService } from '../../services/cockpit/menu.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,46 +21,21 @@ export class SidebarComponent implements OnInit {
   public categories$: Observable<Category[]>;
   public tags$: Observable<Tag[]>;
 
-  menuItems = [
-    {
-      name: 'Inicio',
-      icon: 'zmdi zmdi-home',
-      route: '/inicio'
-    },
-    {
-      name: 'Blog',
-      icon: 'zmdi zmdi-edit',
-      route: '/blog'
-    },
-    {
-      name: 'Portafolio',
-      icon: 'zmdi zmdi-desktop-mac',
-      route: '/portafolio'
-    },
-    {
-      name: 'Libros',
-      icon: 'zmdi zmdi-book',
-      route: '/libros'
-    },
-    {
-      name: 'Sobre mí',
-      icon: 'zmdi zmdi-account',
-      route: '/sobre-mi'
-    },
-    {
-      name: 'Contacto',
-      icon: 'zmdi zmdi-email',
-      route: '/contacto'
-    }
-  ];
+  public menuItems$: Observable<MenuItem[]>;
 
   constructor(
     private categoryService: CategoryService,
-    private tagsService: TagsService
+    private tagsService: TagsService,
+    private menuService: MenuService
   ) {
   }
 
   ngOnInit() {
+    this.menuItems$ = this.menuService.getMenuItems()
+    .pipe(
+      take(1)
+    );
+
     this.categories$ = this.categoryService.getCategories()
     .pipe(
       take(1)
