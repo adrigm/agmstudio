@@ -35,4 +35,4 @@
 </ng-container>
 
 
-<div class="load-btn" *ngIf="!loading && posts.length !== totalPosts" (click)="loadPosts()">Cargar más</div>
+<div class="load-btn animated fadeIn animation-delay-3" *ngIf="!loading && posts.length !== (totalPosts$ | async)" (click)="loadPosts()">Cargar más</div>

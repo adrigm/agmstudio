@@ -48,6 +48,50 @@ export class PostsService {
     );
   }
 
+  public getNumPostsOfCategory(slug: string): Observable<number> {
+    return this.categoryService.getCategoryBySlug(slug)
+    .pipe(
+      map( category => category ? category._id : '' ),
+      switchMap( id => {
+        const body = {
+          filter: {
+            published: true,
+            'category._id': id
+          },
+          limit: 1,
+          fields: { _id: 1 }
+        };
+
+        return this.http.post(this.url, body, { headers: this.headers })
+        .pipe(
+          map( (resp: any) => resp.total)
+        );
+      })
+    );
+  }
+
+  public getNumPostsOfTag(slug: string): Observable<number> {
+    return this.tagsService.getTagBySlug(slug)
+    .pipe(
+      map( category => category ? category._id : '' ),
+      switchMap( id => {
+        const body = {
+          filter: {
+            published: true,
+            $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.3._id': id }, { 'tags.4._id': id }]
+          },
+          limit: 1,
+          fields: { _id: 1 }
+        };
+
+        return this.http.post(this.url, body, { headers: this.headers })
+        .pipe(
+          map( (resp: any) => resp.total)
+        );
+      })
+    );
+  }
+
   public getPostsByCategoryID(id: string, options: PostFilters = {}) {
     const body: any = this.getPostOptions(options);
 

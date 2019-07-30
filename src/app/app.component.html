@@ -4,7 +4,7 @@
   <app-navbar (sidebarOpen)="showSidebar = true" *ngIf="smallDevice" class="agm-navbar-container animated fadeInDown"></app-navbar>
 
   <div class="sidebar-container" >
-    <app-sidebar [hideSidebar]="!showSidebar"></app-sidebar>
+    <app-sidebar [url]="url" [hideSidebar]="!showSidebar"></app-sidebar>
   </div>
   <div class="pages-container">
     <router-outlet></router-outlet>

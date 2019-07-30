@@ -1,4 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Category } from '../../interfaces/category.interface';
+import { CategoryService } from '../../services/cockpit/category.service';
+import { take } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { Tag } from '../../interfaces/tag.interface';
+import { TagsService } from '../../services/cockpit/tags.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +14,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   @Input() hideSidebar = false;
-  firstLoad = true;
+  @Input() url: string;
+
+  public categories$: Observable<Category[]>;
+  public tags$: Observable<Tag[]>;
 
   menuItems = [
     {
@@ -42,14 +52,22 @@ export class SidebarComponent implements OnInit {
     }
   ];
 
-  constructor() { }
-
-  ngOnInit() {
-    setTimeout(() => {
-      this.firstLoad = false;
-    }, 500);
+  constructor(
+    private categoryService: CategoryService,
+    private tagsService: TagsService
+  ) {
   }
 
+  ngOnInit() {
+    this.categories$ = this.categoryService.getCategories()
+    .pipe(
+      take(1)
+    );
 
+    this.tags$ = this.tagsService.getTags()
+    .pipe(
+      take(1)
+    );
+  }
 
 }

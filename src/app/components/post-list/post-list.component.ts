@@ -1,21 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../interfaces/post.interface';
 import { PostsService } from '../../services/cockpit/posts.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.scss']
 })
-export class PostListComponent implements OnInit {
-  @Input() type;
-  @Input() slug;
+export class PostListComponent implements OnInit, OnChanges {
+  @Input() type: string;
+  @Input() slug: string;
 
   public posts: Post[] = [];
-  public totalPosts: number;
+  public totalPosts$: Observable<number>;
   public loading = false;
   public postPerPage = new Array(environment.posts.postsPerPage);
 
@@ -27,10 +28,14 @@ export class PostListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadPosts();
+    // this.loadPosts();
 
-    this.postsService.getNumPosts()
-    .subscribe( num => this.totalPosts = num);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.page = 0;
+    this.posts = [];
+    this.loadPosts();
   }
 
   public loadPosts() {
@@ -39,12 +44,15 @@ export class PostListComponent implements OnInit {
 
     switch (this.type) {
       case 'category':
+        this.totalPosts$ = this.postsService.getNumPostsOfCategory(this.slug);
         obs = this.postsService.getPostsByCategorySlug( this.slug, { page: this.page } );
         break;
       case 'tag':
+        this.totalPosts$ = this.postsService.getNumPostsOfTag(this.slug);
         obs = this.postsService.getPostsByTagSlug( this.slug, { page: this.page } );
         break;
       default:
+        this.totalPosts$ = this.postsService.getNumPosts();
         obs = this.postsService.getPosts( { page: this.page } );
     }
 
@@ -52,7 +60,11 @@ export class PostListComponent implements OnInit {
   }
 
   private getPosts(obs: Observable<Post[]>) {
-    obs.subscribe( posts => {
+    obs
+    .pipe(
+      take(1)
+    )
+    .subscribe( posts => {
       this.posts.push(...posts);
       this.loading = false;
       this.page++;

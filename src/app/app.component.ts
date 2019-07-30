@@ -23,8 +23,9 @@ export const BreakpointsMedia = {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  smallDevice: boolean;
-  showSidebar: boolean;
+  public smallDevice: boolean;
+  public showSidebar: boolean;
+  public url: string;
 
   private unsubscribeAll: Subject<any> = new Subject();
 
@@ -63,13 +64,18 @@ export class AppComponent implements OnInit {
     }
   }
 
-
+  setURL(url: string) {
+    let newUrl = url.substring(1);
+    newUrl = newUrl.substring(0, newUrl.indexOf('/') !== -1 ? newUrl.indexOf('/') : newUrl.length);
+    this.url = newUrl;
+  }
 
   changeRouter() {
     this.router.events.pipe(
       filter(e => e instanceof NavigationEnd),
       map( (route: NavigationEnd) => route.urlAfterRedirects)
     ).subscribe(url => {
+      this.setURL(url);
       if (Array.isArray(this.scrollService.scrollElements)) {
         this.scrollService.scrollElements.map(op => {
           op.scroll({ y : '0px'  });
