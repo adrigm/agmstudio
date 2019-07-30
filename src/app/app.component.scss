@@ -83,6 +83,15 @@
   z-index: 4;
 }
 
-.animated-delay {
-  animation-delay: 1s;
+.app-footer {
+  color: darken($color-light, 20);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+
+  p {
+    margin: 0;
+  }
 }
