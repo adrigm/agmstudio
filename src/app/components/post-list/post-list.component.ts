@@ -4,7 +4,7 @@ import { Post } from '../../interfaces/post.interface';
 import { PostsService } from '../../services/cockpit/posts.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { take } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
@@ -44,15 +44,18 @@ export class PostListComponent implements OnInit, OnChanges {
 
     switch (this.type) {
       case 'category':
-        this.totalPosts$ = this.postsService.getNumPostsOfCategory(this.slug);
+        this.totalPosts$ = this.postsService.getNumPostsOfCategory(this.slug)
+        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/blog']) : null));
         obs = this.postsService.getPostsByCategorySlug( this.slug, { page: this.page } );
         break;
       case 'tag':
-        this.totalPosts$ = this.postsService.getNumPostsOfTag(this.slug);
+        this.totalPosts$ = this.postsService.getNumPostsOfTag(this.slug)
+        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/blog']) : null));
         obs = this.postsService.getPostsByTagSlug( this.slug, { page: this.page } );
         break;
       default:
-        this.totalPosts$ = this.postsService.getNumPosts();
+        this.totalPosts$ = this.postsService.getNumPosts()
+        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/']) : null));
         obs = this.postsService.getPosts( { page: this.page } );
     }
 
