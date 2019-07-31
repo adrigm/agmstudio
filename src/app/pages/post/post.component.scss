@@ -1,0 +1,89 @@
+@import '../../scss/config';
+
+.page-container {
+  padding: 30px 40px;
+
+  .page-title {
+    font-weight: 300;
+    margin-bottom: 30px;
+    border-bottom: dashed 1px $color-border;
+    padding-bottom: 10px;
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .page-container {
+    padding: 0;
+  }
+}
+
+.post-content {
+  h2 {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  pre {
+    margin: 20px 0;
+  }
+
+  .code-container {
+    margin: 20px 0;
+
+    .code-header {
+      background-color: #1d2027;
+      padding: 5px 20px;
+      border-bottom: solid 1px #383e47;
+      color: $color-light;
+      display: flex;
+      align-items: center;
+      font-family: Consolas, Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+      &:before {
+        color: $color-light;
+        padding-top: 3px;
+        margin: 0 10px 0 0;
+        font-family: 'Material-Design-Iconic-Font';
+        content: '\f222';
+        display: block;
+        opacity: .8;
+      }
+
+    }
+
+    pre {
+      margin: 0px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .post-content {
+    h2 {
+      font-size: 18px;
+    }
+
+    pre {
+      margin: 20px 0px;
+    }
+
+    .code-container {
+      margin: 20px 0px;
+
+      .code-header {
+        padding: 5px 15px;
+
+      }
+
+      pre {
+        margin: 0px;
+      }
+    }
+  }
+}
+

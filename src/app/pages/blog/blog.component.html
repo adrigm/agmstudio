@@ -2,8 +2,4 @@
   <ng-container *ngIf="type !== 'post'">
     <app-post-list [type]="type" [slug]="slug"></app-post-list>
   </ng-container>
-
-  <ng-container *ngIf="type === 'post'">
-    <app-post-content [post]="post | async"></app-post-content>
-  </ng-container>
 </div>

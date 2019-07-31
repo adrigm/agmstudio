@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
-import { PostContentComponent } from './post-content/post-content.component';
-import { PostListComponent } from './post-list/post-list.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
 import { PipesModule } from '../pipes/pipes.module';
+import { PostListComponent } from './post-list/post-list.component';
 
 
 
 @NgModule({
   declarations: [
-    PostContentComponent,
     PostListComponent
   ],
   imports: [
@@ -16,7 +15,6 @@ import { PipesModule } from '../pipes/pipes.module';
     PipesModule
   ],
   exports: [
-    PostContentComponent,
     PostListComponent
   ]
 })

@@ -1,3 +1,31 @@
-<p>
-  post works!
-</p>
+<div class="page-container">
+  <div *ngIf="!post">
+    <div class="content-preload title-preload"></div>
+    <div class="mb-5">
+        <div class="content-preload line-preload"></div>
+        <div class="content-preload line-preload odd"></div>
+        <div class="content-preload line-preload"></div>
+    </div>
+    <div class="mb-5">
+        <div class="content-preload line-preload odd"></div>
+        <div class="content-preload line-preload"></div>
+        <div class="content-preload line-preload odd"></div>
+    </div>
+    <div class="mb-5">
+        <div class="content-preload line-preload"></div>
+        <div class="content-preload line-preload odd"></div>
+        <div class="content-preload line-preload"></div>
+    </div>
+    <div class="mb-5">
+        <div class="content-preload line-preload odd"></div>
+        <div class="content-preload line-preload"></div>
+        <div class="content-preload line-preload odd"></div>
+    </div>
+  </div>
+
+  <div class="animated fadeIn animation-delay-3" *ngIf="post">
+    <h1>{{ post.title }}</h1>
+
+    <div class="post-content" [innerHTML]="post.content"></div>
+  </div>
+</div>

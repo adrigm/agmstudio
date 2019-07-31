@@ -53,6 +53,24 @@
   }
 }
 
+.page-container {
+  padding: 30px 40px;
+
+  .page-title {
+    font-weight: 300;
+    margin-bottom: 30px;
+    border-bottom: dashed 1px $color-border;
+    padding-bottom: 10px;
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .page-container {
+    padding: 0;
+  }
+}
+
 @media (max-width: 991px) {
   .agm-container {
 
