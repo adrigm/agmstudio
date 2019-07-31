@@ -38,7 +38,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.slug = id;
 
       if (type === 'post') {
-        this.post = this.postsService.getPostBySlug(id);
+        this.post = this.postsService.getPostByUniqueSlug(this.slug);
       }
     });
   }

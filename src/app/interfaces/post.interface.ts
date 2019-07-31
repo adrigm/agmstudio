@@ -10,6 +10,7 @@ export interface Post {
   tags: Tag[];
   title: string;
   title_slug: string;
+  slug: string;
   _by: string;
   _created: number;
   _id: string;
