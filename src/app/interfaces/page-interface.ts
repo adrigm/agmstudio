@@ -9,5 +9,7 @@ export interface Page {
   _modified: number;
   _created: number;
   _id: string;
+  published: boolean;
   children: any[];
+  showTitle: boolean;
 }
