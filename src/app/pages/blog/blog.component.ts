@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   slug: string;
 
   constructor(
-    private router: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private postsService: PostsService
   ) { }
 
@@ -29,7 +29,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
 
   private getPostsList() {
-    this.router.params
+    this.activatedRoute.params
     .subscribe( params => {
       const type = params['type'] || '';
       const id = params['id'] || '';

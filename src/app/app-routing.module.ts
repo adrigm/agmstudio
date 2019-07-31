@@ -8,15 +8,15 @@ import { BooksComponent } from './pages/books/books.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { PostComponent } from './pages/post/post.component';
+import { PageComponent } from './pages/page/page.component';
 
 const routes: Routes = [
-  { path: 'inicio', component: HomeComponent },
   { path: 'blog/:type/:id', component: BlogComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'portafolio', component: PortfolioComponent },
-  { path: 'libros', component: BooksComponent },
-  { path: 'sobre-mi', component: AboutComponent },
+  { path: 'portafolio/:type/:id', component: PortfolioComponent },
   { path: 'contacto', component: ContactComponent },
+  { path: ':id', component: PageComponent },
   { path: '', pathMatch: 'full', redirectTo: 'inicio' },
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];

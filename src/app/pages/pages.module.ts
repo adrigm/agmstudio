@@ -9,9 +9,10 @@ import { ContactComponent } from './contact/contact.component';
 import { PostComponent } from './post/post.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ComponentsModule } from '../components/components.module';
+import { PageComponent } from './page/page.component';
 
 @NgModule({
-  declarations: [HomeComponent, BlogComponent, AboutComponent, BooksComponent, PortfolioComponent, ContactComponent, PostComponent],
+  declarations: [HomeComponent, BlogComponent, AboutComponent, BooksComponent, PortfolioComponent, ContactComponent, PostComponent, PageComponent],
   imports: [
     CommonModule,
     PipesModule,

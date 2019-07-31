@@ -18,6 +18,17 @@ export class PagesService {
     private http: HttpClient,
   ) { }
 
+  public getPages(): Observable<Page[]> {
+    const body = {
+      filter: {
+        published: true,
+      },
+      simple: 1,
+    };
+
+    return this.http.post<Page[]>(this.url, body, { headers: this.headers });
+  }
+
   public getPageByID(id: string): Observable<Page> {
     const body = {
       filter: {
@@ -37,7 +48,7 @@ export class PagesService {
     const body = {
       filter: {
         published: true,
-        slug_name: slug
+        title_slug: slug
       },
       simple: 1,
     };
