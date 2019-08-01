@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   cockpit: {
     token: 'f2d1f54c3065ab355c88dce1d86cfc',
-    url: 'http://agmstudio.io/cockpit2/api/collections/get'
+    url: 'https://agmstudio.io/cockpit2/api/collections/get',
+    urlForms: 'https://agmstudio.io/cockpit2/api/forms/submit'
   },
   posts: {
     postsPerPage: 5

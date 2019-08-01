@@ -92,3 +92,26 @@
   color: $color-red;
 }
 
+.msg-system {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 200;
+  padding: 10px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.msg-ok {
+    background-color: $color-green;
+    color: #fff;
+  }
+
+  &.msg-ko {
+    background-color: $color-red;
+    color: #fff;
+  }
+}

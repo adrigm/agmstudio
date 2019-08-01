@@ -1,0 +1,44 @@
+@import './_config';
+
+.btn {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba($color-medium, 0.4);
+  padding: 7px 20px;
+  transition: all ease 0.3s;
+  outline: none !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 3px 7px rgba($color-medium, 0.5) !important;
+    outline: none !important;
+  }
+
+  &.btn-primary {
+    background-color: $color-primary;
+    border-color: darken($color-primary, 2);
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle,
+    &:focus,
+    &:active {
+      background-color: darken($color-primary, 2) !important;
+      border-color: darken($color-primary, 2) !important;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: $color-medium;
+    border-color: darken($color-medium, 2);
+
+    .btn-secondary:not(:disabled):not(.disabled).active,
+    .btn-secondary:not(:disabled):not(.disabled):active,
+    .show>.btn-secondary.dropdown-toggle,
+    &:focus,
+    &:active {
+      background-color: darken($color-medium, 2) !important;
+      border-color: darken($color-medium, 2) !important;
+    }
+  }
+}
