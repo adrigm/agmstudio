@@ -29,10 +29,24 @@
       <h3 class="section-menu-title animated fadeIn animation-delay-4">Etiquetas</h3>
       <ul class="section-menu-tags">
         <li *ngFor="let item of tags$ | async; let i = index" routerLinkActive="active"
-        [class]="'menu-tag animated fadeIn animation-delay-' + (i + 4)" [routerLink]="['/', 'blog', 'tag', item.name_slug]">
+          [class]="'menu-tag animated fadeIn animation-delay-' + (i + 4)"
+          [routerLink]="['/', 'blog', 'tag', item.name_slug]">
           {{ item.name }}
         </li>
       </ul>
     </ng-container>
   </nav>
+
+  <ng-container *ngIf="url !== 'blog'">
+    <h3 class="section-menu-title animated fadeIn animation-delay-4">Sígueme</h3>
+    <ul class="section-menu">
+      <li *ngFor="let item of social$ | async; let i = index" routerLinkActive="active"
+        [class]="'menu-item animated fadeIn animation-delay-' + (i + 4)">
+        <a [href]="item.link" class="menu-link">
+          <i [style.color]="item.color" [class]="item.icon"></i> {{ item.name }}
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+
 </aside>
