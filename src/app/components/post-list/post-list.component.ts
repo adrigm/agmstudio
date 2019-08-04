@@ -45,17 +45,17 @@ export class PostListComponent implements OnInit, OnChanges {
     switch (this.type) {
       case 'category':
         this.totalPosts$ = this.postsService.getNumPostsOfCategory(this.slug)
-        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/blog']) : null));
+        .pipe(tap( resp => resp || this.router.navigate(['/blog'])));
         obs = this.postsService.getPostsByCategorySlug( this.slug, { page: this.page, content: false } );
         break;
       case 'tag':
         this.totalPosts$ = this.postsService.getNumPostsOfTag(this.slug)
-        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/blog']) : null));
+        .pipe(tap( resp => resp || this.router.navigate(['/blog'])));
         obs = this.postsService.getPostsByTagSlug( this.slug, { page: this.page, content: false } );
         break;
       default:
         this.totalPosts$ = this.postsService.getNumPosts()
-        .pipe(tap( resp => resp === 0 ? this.router.navigate(['/']) : null));
+        .pipe(tap( resp => resp || this.router.navigate(['/'])));
         obs = this.postsService.getPosts( { page: this.page, content: false } );
     }
 

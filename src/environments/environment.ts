@@ -7,7 +7,8 @@ export const environment = {
   cockpit: {
     token: 'f2d1f54c3065ab355c88dce1d86cfc',
     url: 'https://agmstudio.io/cockpit2/api/collections/get',
-    urlForms: 'https://agmstudio.io/cockpit2/api/forms/submit'
+    urlForms: 'https://agmstudio.io/cockpit2/api/forms/submit',
+    urlCockpit: 'https://agmstudio.io/cockpit2/api/cockpit'
   },
   posts: {
     postsPerPage: 5
