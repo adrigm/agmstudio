@@ -16,9 +16,10 @@ export class ImageService {
     private http: HttpClient
   ) { }
 
-  public getImageUrl(src: string, width?: string, height?: string): Observable<string> {
+  public getImageUrl(src: string, width?: number, height?: number): Observable<string> {
     const body = {
       src,
+      d: false
     };
 
     if (width) {

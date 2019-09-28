@@ -2,7 +2,7 @@
 
 <article (click)="goPost(post.slug)" class="post animated fadeIn" *ngFor="let post of posts">
   <div class="post-img">
-    <img class="img-fluid" [src]="'https://agmstudio.io/cockpit2/storage/uploads' + post.image.path" alt="RxJs">
+    <img class="img-fluid" [src]="post.image.path | image" alt="RxJs">
   </div>
   <div class="post-title-container">
     <span class="post-category mr-4"> <i class="color-primary zmdi zmdi-folder-outline"></i>
