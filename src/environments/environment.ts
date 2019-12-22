@@ -6,10 +6,10 @@ export const environment = {
   production: false,
   cockpit: {
     token: 'f2d1f54c3065ab355c88dce1d86cfc',
-    url: 'https://agmstudio.io/cockpit2/api/collections/get',
-    urlForms: 'https://agmstudio.io/cockpit2/api/forms/submit',
-    urlCockpit: 'https://agmstudio.io/cockpit2/api/cockpit',
-    urlStorage: 'https://agmstudio.io/cockpit2/storage'
+    url: 'htthttp://localhost/cockpit2/api/collections/get',
+    urlForms: 'htthttp://localhost/cockpit2/api/forms/submit',
+    urlCockpit: 'htthttp://localhost/cockpit2/api/cockpit',
+    urlStorage: 'htthttp://localhost/cockpit2/storage'
   },
   posts: {
     postsPerPage: 5

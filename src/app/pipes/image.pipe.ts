@@ -21,9 +21,11 @@ export class ImagePipe implements PipeTransform, OnDestroy {
 
   transform(value: string, width = 100, height = 100): string {
 
-    const url = this.imageService.getImageUrl(value, width, height);
+    // const url = this.imageService.getImageUrl(value, width, height);
 
-    return environment.cockpit.urlStorage + (this.asyncPipe.transform(url) || '');
+    // return environment.cockpit.urlStorage + (this.asyncPipe.transform(url) || '');
+
+    return environment.cockpit.urlStorage + '/uploads' + value;
   }
 
   ngOnDestroy() {
