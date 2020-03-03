@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { PostFilters } from '../../interfaces/post-filters.interdace';
@@ -30,7 +30,10 @@ export class PostsService {
 
     const body = this.getPostOptions(options);
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Post[]>(this.url, body, { headers: this.headers })
+    .pipe(
+      delay(300)
+    );
   }
 
   public getNumPosts(): Observable<number> {
