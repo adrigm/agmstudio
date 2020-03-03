@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Category } from '../../interfaces/category.interface';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
