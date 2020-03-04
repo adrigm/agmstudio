@@ -1,0 +1,28 @@
+.alert {
+  border-radius: 0;
+  border-left: solid 5px;
+
+  &.alert-warning {
+    background-color: rgb(255, 248, 209);
+    border-color: rgb(236, 201, 0);
+  }
+
+  &.alert-success {
+    background-color: rgb(206, 255, 209);
+    border-color: rgb(6, 179, 0);
+  }
+
+  &.alert-info {
+    background-color: rgb(206, 235, 255);
+    border-color: rgb(0, 118, 197);
+  }
+
+  &.alert-danger {
+    background-color: rgb(255, 212, 206);
+    border-color: rgb(182, 28, 1);
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
