@@ -8,9 +8,6 @@ import { map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TagsService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/tag`;
 
   constructor(
@@ -22,7 +19,7 @@ export class TagsService {
       simple: 1,
     };
 
-    return this.http.post<Tag[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Tag[]>(this.url, body);
   }
 
   public getTagByID(id: string) {
@@ -33,7 +30,7 @@ export class TagsService {
       simple: 1,
     };
 
-    return this.http.post<Tag[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Tag[]>(this.url, body)
     .pipe(
       map( tag => tag.length > 0 ? tag[0] : null )
     );
@@ -47,7 +44,7 @@ export class TagsService {
       simple: 1,
     };
 
-    return this.http.post<Tag[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Tag[]>(this.url, body)
     .pipe(
       map( tag => tag.length > 0 ? tag[0] : null )
     );

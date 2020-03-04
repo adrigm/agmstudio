@@ -8,9 +8,6 @@ import { SocialLink } from 'src/app/interfaces/social-link.interface';
   providedIn: 'root'
 })
 export class SocialService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/social`;
 
   constructor(
@@ -22,6 +19,6 @@ export class SocialService {
       simple: 1
     };
 
-    return this.http.post<SocialLink[]>(this.url, body, { headers: this.headers });
+    return this.http.post<SocialLink[]>(this.url, body);
   }
 }

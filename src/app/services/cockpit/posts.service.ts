@@ -13,9 +13,6 @@ import { TagsService } from './tags.service';
   providedIn: 'root'
 })
 export class PostsService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/posts`;
 
   private limit = environment.posts.postsPerPage;
@@ -30,7 +27,7 @@ export class PostsService {
 
     const body = this.getPostOptions(options);
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Post[]>(this.url, body)
     .pipe(
       delay(300)
     );
@@ -45,7 +42,7 @@ export class PostsService {
       fields: { _id: 1 }
     };
 
-    return this.http.post(this.url, body, { headers: this.headers })
+    return this.http.post(this.url, body)
     .pipe(
       map( (resp: any) => resp.total)
     );
@@ -65,7 +62,7 @@ export class PostsService {
           fields: { _id: 1 }
         };
 
-        return this.http.post(this.url, body, { headers: this.headers })
+        return this.http.post(this.url, body)
         .pipe(
           map( (resp: any) => resp.total)
         );
@@ -87,7 +84,7 @@ export class PostsService {
           fields: { _id: 1 }
         };
 
-        return this.http.post(this.url, body, { headers: this.headers })
+        return this.http.post(this.url, body)
         .pipe(
           map( (resp: any) => resp.total)
         );
@@ -103,7 +100,7 @@ export class PostsService {
       'category._id': id
     };
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Post[]>(this.url, body);
   }
 
   public getPostsByCategorySlug(slug: string, options: PostFilters = {}): Observable<Post[]> {
@@ -123,7 +120,7 @@ export class PostsService {
       $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.3._id': id }, { 'tags.4._id': id }]
     };
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Post[]>(this.url, body);
   }
 
   public getPostsByTagSlug(slug: string, options: PostFilters = {}): Observable<Post[]> {
@@ -144,7 +141,7 @@ export class PostsService {
       _id: id
     };
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Post[]>(this.url, body)
     .pipe(
       map( posts => posts.length > 0 ? posts[0] : null )
     );
@@ -158,7 +155,7 @@ export class PostsService {
       title_slug: slug
     };
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Post[]>(this.url, body)
     .pipe(
       map( posts => posts.length > 0 ? posts[0] : null )
     );
@@ -172,7 +169,7 @@ export class PostsService {
       slug
     };
 
-    return this.http.post<Post[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Post[]>(this.url, body)
     .pipe(
       map( posts => posts.length > 0 ? posts[0] : null )
     );

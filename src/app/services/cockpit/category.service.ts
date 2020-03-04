@@ -9,9 +9,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/category`;
 
   constructor(
@@ -23,7 +20,7 @@ export class CategoryService {
       simple: 1,
     };
 
-    return this.http.post<Category[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Category[]>(this.url, body);
   }
 
   public getCategoryByID(id: string): Observable<Category> {
@@ -34,7 +31,7 @@ export class CategoryService {
       simple: 1,
     };
 
-    return this.http.post<Category[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Category[]>(this.url, body)
     .pipe(
       map( category => category.length > 0 ? category[0] : null )
     );
@@ -48,7 +45,7 @@ export class CategoryService {
       simple: 1,
     };
 
-    return this.http.post<Category[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Category[]>(this.url, body)
     .pipe(
       map( category => category.length > 0 ? category[0] : null )
     );

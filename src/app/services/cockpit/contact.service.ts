@@ -8,9 +8,6 @@ import { ContactForm } from '../../interfaces/contact-form.interface';
   providedIn: 'root'
 })
 export class ContactService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.urlForms }/contact`;
 
   constructor(
@@ -24,6 +21,6 @@ export class ContactService {
       }
     };
 
-    return this.http.post<ContactForm>(this.url, body, { headers: this.headers });
+    return this.http.post<ContactForm>(this.url, body);
   }
 }

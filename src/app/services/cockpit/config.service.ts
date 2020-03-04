@@ -6,9 +6,6 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class ConfigService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/config`;
 
   constructor(
@@ -20,6 +17,6 @@ export class ConfigService {
       simple: 1
     };
 
-    return this.http.post(this.url, body, { headers: this.headers });
+    return this.http.post(this.url, body);
   }
 }

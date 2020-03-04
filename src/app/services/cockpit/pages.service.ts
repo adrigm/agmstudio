@@ -9,9 +9,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PagesService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.url }/pages`;
 
   constructor(
@@ -26,7 +23,7 @@ export class PagesService {
       simple: 1,
     };
 
-    return this.http.post<Page[]>(this.url, body, { headers: this.headers });
+    return this.http.post<Page[]>(this.url, body);
   }
 
   public getPageByID(id: string): Observable<Page> {
@@ -38,7 +35,7 @@ export class PagesService {
       simple: 1,
     };
 
-    return this.http.post<Page[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Page[]>(this.url, body)
     .pipe(
       map( page => page.length > 0 ? page[0] : null )
     );
@@ -53,7 +50,7 @@ export class PagesService {
       simple: 1,
     };
 
-    return this.http.post<Page[]>(this.url, body, { headers: this.headers })
+    return this.http.post<Page[]>(this.url, body)
     .pipe(
       map( page => page.length > 0 ? page[0] : null )
     );

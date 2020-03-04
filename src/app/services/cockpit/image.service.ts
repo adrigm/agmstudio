@@ -7,9 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ImageService {
-  private headers = new HttpHeaders({
-    'Cockpit-Token': environment.cockpit.token
-  });
   private url = `${ environment.cockpit.urlCockpit }/image`;
 
   constructor(
@@ -30,6 +27,6 @@ export class ImageService {
       body['h'] = height;
     }
 
-    return this.http.post<string>(this.url, body, { headers: this.headers });
+    return this.http.post<string>(this.url, body);
   }
 }
