@@ -27,10 +27,7 @@ export class PostsService {
 
     const body = this.getPostOptions(options);
 
-    return this.http.post<Post[]>(this.url, body)
-    .pipe(
-      delay(300)
-    );
+    return this.http.post<Post[]>(this.url, body);
   }
 
   public getNumPosts(): Observable<number> {
