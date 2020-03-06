@@ -75,7 +75,7 @@ export class PostsService {
         const body = {
           filter: {
             published: true,
-            $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.3._id': id }, { 'tags.4._id': id }]
+            $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.2._id': id }, { 'tags.3._id': id }]
           },
           limit: 1,
           fields: { _id: 1 }
@@ -114,7 +114,7 @@ export class PostsService {
 
     body.filter = {
       ...body.filter,
-      $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.3._id': id }, { 'tags.4._id': id }]
+      $or: [{ 'tags.0._id': id }, { 'tags.1._id': id }, { 'tags.2._id': id }, { 'tags.3._id': id }]
     };
 
     return this.http.post<Post[]>(this.url, body);

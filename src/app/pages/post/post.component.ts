@@ -39,7 +39,7 @@ export class PostComponent implements OnInit, AfterViewChecked, OnDestroy {
     )
     .pipe(
       tap(post => !post ? this.router.navigate(['/blog']) : null ),
-      takeUntil(this.destroy$),
+      takeUntil(this.destroy$)
     )
     .subscribe( post => {
       this.post = post;

@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { PageComponent } from './page/page.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PostComponent } from './post/post.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PostComponent } from './post/post.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     PipesModule,
     ComponentsModule
   ]
