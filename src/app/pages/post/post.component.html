@@ -32,7 +32,7 @@
           <i class="zmdi zmdi-time mr-1"></i> {{ post._created * 1000 | date:'dd/MM/yyyy' }}
         </span>
         <span class="mr-4">
-          <i class="zmdi zmdi-account mr-1"></i> {{ post._by }}
+          <i class="zmdi zmdi-account mr-1"></i> {{ (userName$ | async)?.name }}
         </span>
       </div>
       <div>

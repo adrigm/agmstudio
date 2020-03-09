@@ -4,7 +4,9 @@ import { PostsService } from '../../services/cockpit/posts.service';
 import { Post } from '../../interfaces/post.interface';
 import { map, switchMap, tap, takeUntil } from 'rxjs/operators';
 import { HighlightService } from '../../services/highlight-service.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { UserService } from '../../services/cockpit/user.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'app-post',
@@ -14,6 +16,7 @@ import { Subject } from 'rxjs';
 })
 export class PostComponent implements OnInit, AfterViewChecked, OnDestroy {
   public post: Post;
+  public userName$: Observable<User>;
 
   private highlighted = false;
   private destroy$: Subject<boolean> = new Subject<boolean>();
@@ -22,6 +25,7 @@ export class PostComponent implements OnInit, AfterViewChecked, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private postsService: PostsService,
+    private userService: UserService,
     private highlightService: HighlightService
   ) { }
 
@@ -43,7 +47,12 @@ export class PostComponent implements OnInit, AfterViewChecked, OnDestroy {
     )
     .subscribe( post => {
       this.post = post;
+      this.getUserName(post._by);
     });
+  }
+
+  private getUserName(id: string) {
+    this.userName$ = this.userService.getUserById(id);
   }
 
   public ngAfterViewChecked(): void {
